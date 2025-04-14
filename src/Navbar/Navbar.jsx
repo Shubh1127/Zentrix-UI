@@ -2,10 +2,10 @@ import { FaSearch ,FaGithub,FaSun} from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center w-[100%]  h-[7vh]">
+    <div className="flex items-center w-full overflow-hidden   h-[7vh]">
       <div className="flex-1/2 flex items-center ">
         <div className="mx-12 ">
-          <h1 className="text-4xl font-bold text-slate-900">Zentrix-UI</h1>
+          <h1 className="text-4xl font-bold text-slate-900 cursor-pointer">Zentrix-UI</h1>
         </div>
 
         <div className="">
