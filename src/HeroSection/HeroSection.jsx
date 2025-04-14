@@ -181,7 +181,7 @@ export default function ChessHero() {
             Browse Components
           </button>
           <button size="lg" variant="outline" className="text-slate-900 border-slate-900 bg-white w-[12vw] rounded-md hover:bg-slate-900/10">
-            ~ npm i @Zentrix/ui
+            ~ npm i @zentrix/ui
           </button>
         </div>
       </div>

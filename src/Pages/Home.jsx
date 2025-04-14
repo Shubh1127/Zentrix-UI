@@ -9,7 +9,6 @@ const Home = () => {
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       setPosition({ x: clientX, y: clientY });
-      console.log("Mouse Position:", clientX, clientY); // Debugging
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -20,8 +19,8 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="w-screen">
-      <div className="w-screen h-[40%] bg-red-500">
+    <div className="w-screen flex flex-col gap-12">
+      <div className="w-screen h-[40%]  ">
         <Navbar />
       </div>
       <div
