@@ -1,0 +1,15 @@
+@import "tailwindcss";
+body {
+    font-family: 'Geist Sans', sans-serif;
+  }
+  @font-face {
+    font-family: '__geistSans';
+    src: url('/fonts/geistSans_1e4310.woff2') format('woff2'),
+         url('/fonts/geistSans_1e4310.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .floating {
+    will-change: transform;
+  }
