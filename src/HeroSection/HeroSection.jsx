@@ -1,8 +1,10 @@
 // src/components/ChessHero.jsx
 
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ChessHero() {
+  const navigate=useNavigate();
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -177,7 +179,7 @@ export default function ChessHero() {
         Zentrix UI is a modern, lightweight UI component library designed for seamless integration into React applications. It offers customizable components with a focus on clean, responsive design to enhance user experience.
         </p>
         <div className="flex flex-wrap justify-center gap-4 mt-10">
-          <button size="lg" className="bg-slate-900 text-white border-transparent p-3 rounded-md w-[12vw]  hover:bg-white hover:border-slate-900 hover:text-slate-900 border-2 transition duration-300 ease-in-out cursor-pointer">
+          <button onClick={()=>navigate('/components')} size="lg" className="bg-slate-900 text-white border-transparent p-3 rounded-md w-[12vw]  hover:bg-white hover:border-slate-900 hover:text-slate-900 border-2 transition duration-300 ease-in-out cursor-pointer">
             Browse Components
           </button>
           <button size="lg" variant="outline" className="text-slate-900 border-slate-900 bg-white w-[12vw] rounded-md hover:bg-slate-900/10">

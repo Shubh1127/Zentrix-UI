@@ -1,16 +1,18 @@
 import { FaSearch ,FaGithub,FaSun} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate=useNavigate();
   return (
     <div className="flex items-center w-full overflow-hidden   h-[7vh]">
       <div className="flex-1/2 flex items-center ">
         <div className="mx-12 ">
-          <h1 className="text-4xl font-bold text-slate-900 cursor-pointer">Zentrix-UI</h1>
+          <h1 className="text-4xl font-bold text-slate-900 cursor-pointer" onClick={()=>navigate('/')}>Zentrix-UI</h1>
         </div>
 
         <div className="">
           <ul className="flex items-center gap-8 ml-auto">
-            <li className="group flex gap-1 items-center text-lg  text-slate-900 cursor-pointer">
+            <li onClick={()=>navigate('/components')} className="group flex gap-1 items-center text-lg  text-slate-900 cursor-pointer">
               Components{" "}
               <svg
                 className="transform transition-transform duration-500 group-hover:rotate-360"

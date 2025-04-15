@@ -4,7 +4,9 @@ import { FaSearch, FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
 
 const Layout = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isComponentsExpanded, setIsComponentsExpanded] = useState(true);
+  const [isApplicationUiExpanded, setIsApplicationUiExpanded] = useState(false);
+  const [isApplicationPagesExpanded, setIsApplicationPagesExpanded] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   const components = [
@@ -25,9 +27,30 @@ const Layout = () => {
     { name: "Tabs", count: 2 },
   ];
 
+  const applicationUi = [
+    { name: "Dashboards", count: 3 },
+    { name: "Forms", count: 4 },
+    { name: "Tables", count: 2 },
+  ];
+
+  const applicationPages = [
+    { name: "Login", count: 1 },
+    { name: "Register", count: 1 },
+    { name: "Profile", count: 1 },
+    { name: "Settings", count: 1 },
+  ];
+
   // Filter components based on search term
   const filteredComponents = components.filter((component) =>
     component.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredApplicationUi = applicationUi.filter((ui) =>
+    ui.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredApplicationPages = applicationPages.filter((page) =>
+    page.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -46,27 +69,27 @@ const Layout = () => {
             <FaSearch className="absolute left-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Search Components"
+              placeholder="Search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full h-full text-sm pl-12 pr-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-full"
             />
           </div>
 
-          {/* Components List */}
+          {/* Components Section */}
           <div className="p-4">
             <div
               className="flex items-center justify-between cursor-pointer text-gray-700 font-semibold"
-              onClick={() => setIsExpanded(!isExpanded)}
+              onClick={() => setIsComponentsExpanded(!isComponentsExpanded)}
             >
               <span>Components</span>
               <FaChevronDown
                 className={`transition-transform ${
-                  isExpanded ? "rotate-0" : "-rotate-90"
+                  isComponentsExpanded ? "rotate-0" : "-rotate-90"
                 }`}
               />
             </div>
-            {isExpanded && (
+            {isComponentsExpanded && (
               <ul className="mt-4 space-y-2">
                 {filteredComponents.map((component) => (
                   <li key={component.name}>
@@ -78,6 +101,66 @@ const Layout = () => {
                       <span className="text-sm text-gray-500">
                         {component.count}
                       </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Application UI Section */}
+          <div className="p-4">
+            <div
+              className="flex items-center justify-between cursor-pointer text-gray-700 font-semibold"
+              onClick={() => setIsApplicationUiExpanded(!isApplicationUiExpanded)}
+            >
+              <span>Application UI</span>
+              <FaChevronDown
+                className={`transition-transform ${
+                  isApplicationUiExpanded ? "rotate-0" : "-rotate-90"
+                }`}
+              />
+            </div>
+            {isApplicationUiExpanded && (
+              <ul className="mt-4 space-y-2">
+                {filteredApplicationUi.map((ui) => (
+                  <li key={ui.name}>
+                    <Link
+                      to={`/components/${ui.name.toLowerCase()}`}
+                      className="flex justify-between items-center p-2 text-gray-700 hover:bg-gray-200 rounded"
+                    >
+                      <span>{ui.name}</span>
+                      <span className="text-sm text-gray-500">{ui.count}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Application Pages Section */}
+          <div className="p-4">
+            <div
+              className="flex items-center justify-between cursor-pointer text-gray-700 font-semibold"
+              onClick={() => setIsApplicationPagesExpanded(!isApplicationPagesExpanded)}
+            >
+              <span>Application Pages</span>
+              <FaChevronDown
+                className={`transition-transform ${
+                  isApplicationPagesExpanded ? "rotate-0" : "-rotate-90"
+                }`}
+              />
+            </div>
+            {isApplicationPagesExpanded && (
+              <ul className="mt-4 space-y-2">
+                {filteredApplicationPages.map((page) => (
+                  <li key={page.name}>
+                    <Link
+                      to={`/components/${page.name.toLowerCase()}`}
+                      className="flex justify-between items-center p-2 text-gray-700 hover:bg-gray-200 rounded"
+                    >
+                      <span>{page.name}</span>
+                      <span className="text-sm text-gray-500">{page.count}</span>
                     </Link>
                   </li>
                 ))}
