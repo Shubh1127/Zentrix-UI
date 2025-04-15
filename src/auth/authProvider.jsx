@@ -9,31 +9,28 @@ export const AuthProvider = ({ children }) => {
 
   // Check for an authenticated user on component mount
   useEffect(() => {
-    const session = supabase.auth.session();
-    setUser(session?.user || null);
-    setLoading(false);
-
-    // Listen for auth state changes
-    const { data: subscription } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user || null);
-        setLoading(false);
+    const getSession = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      if (error) {
+        console.error("Error fetching session:", error.message);
+      } else {
+        setUser(data.session?.user || null);
       }
-    );
-
-    return () => subscription.unsubscribe();
+      setLoading(false);
+    };
+    getSession();
   }, []);
 
   // Sign up with email and password
   const signUpWithEmail = async (email, password) => {
-    const { user, error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signUp({ email, password });
     if (error) throw error;
-    return user;
+    return data.user;
   };
 
   // Sign in with Google
   const signInWithGoogle = async () => {
-    const { error } = await supabase.auth.signIn({
+    const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
     });
     if (error) throw error;
@@ -41,7 +38,7 @@ export const AuthProvider = ({ children }) => {
 
   // Sign in with GitHub
   const signInWithGitHub = async () => {
-    const { error } = await supabase.auth.signIn({
+    const { error } = await supabase.auth.signInWithOAuth({
       provider: "github",
     });
     if (error) throw error;

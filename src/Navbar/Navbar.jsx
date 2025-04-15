@@ -87,7 +87,7 @@ const Navbar = () => {
         <div className="dark-mode-toggle">
         <FaSun className="text-slate-900 text-2xl ml-4 cursor-pointer" />
         </div>
-        <button className="ml-4 bg-slate-900 text-white border-transparent p-1 rounded-md w-[5vw] hover:bg-white hover:border-slate-900 hover:text-slate-900 border-2 transition duration-300 ease-in-out cursor-pointer">
+        <button onClick={()=>navigate('/signup')} className="ml-4 bg-slate-900 text-white border-transparent p-1 rounded-md w-[5vw] hover:bg-white hover:border-slate-900 hover:text-slate-900 border-2 transition duration-300 ease-in-out cursor-pointer">
           Sign In
         </button>
       </div>
