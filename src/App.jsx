@@ -5,6 +5,7 @@ import Layout from "./Layout/Layout";
 import ComponentPage from "./Pages/ComponentPage";
 import './App.css'
 import Signup from "./auth/Signup/Signup";
+import Button from "./Components/AddToCartButton";
 function App() {
   return (
     
@@ -16,6 +17,7 @@ function App() {
         <Route path="/components" element={<Layout />}>
           <Route path=":componentName" element={<ComponentPage />} />
         </Route>
+        <Route path="/button" element={<Button/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="*" element={<h1 className="text-center mt-[40vh]">404 Page not found</h1>} />
       </Routes>
