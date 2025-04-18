@@ -51,7 +51,7 @@ const ComponentPage = () => {
 
       {/* Right Section */}
       <div className="w-full lg:w-[25%] bg-gray-50 p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-3">On This Page</h2>
+        <h2 className="text-xl font-bold mb-4">On This Page</h2>
         <ul className="space-y-2">
           {guideItems.map((item, index) => (
             <li key={index} className="text-blue-500 hover:underline cursor-pointer">
@@ -60,7 +60,7 @@ const ComponentPage = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </div> 
   );
 };
 
